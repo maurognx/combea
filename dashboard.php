@@ -2,10 +2,14 @@
 session_start();
 include_once 'includes/functions.php';
 
+// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
+
+// Obter o nível do usuário
+$nivel_usuario = $_SESSION['usuario']['nivel_acesso']; // Captura o nível de acesso
 
 // Obter a quantidade de animais cadastrados pelo proprietário
 $cod_proprietario = $_SESSION['usuario']['codigo'];
@@ -63,20 +67,24 @@ if ($hora_atual < 12) {
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="d-flex flex-column">
-                    <a href="cadastro_proprietario.php" class="btn btn-primary mb-2">Cadastrar Proprietário</a>
-                    <a href="cadastro_animal.php" class="btn btn-primary mb-2">Cadastrar Animal</a>
-                    <a href="cadastro_raca.php" class="btn btn-primary mb-2">Cadastrar Raça</a>
-                    <a href="cadastro_porte.php" class="btn btn-primary mb-2">Cadastrar Porte</a>
+                    <?php if ($nivel_usuario == 0): // Verifica se o usuário é administrador ?>
+                        <a href="cadastro_raca.php" class="btn btn-primary mb-2">Cadastrar Raça</a>
+                        <a href="cadastro_deficiencia.php" class="btn btn-primary mb-2">Cadastrar Deficiência</a>
+                        <a href="cadastro_obito.php" class="btn btn-primary mb-2">Cadastrar Causa de Óbito</a>
+                        <a href="cadastro_proprietario.php" class="btn btn-primary mb-2">Cadastrar Proprietário</a>
+                        <a href="cadastro_animal.php" class="btn btn-primary mb-2">Cadastrar Animal</a>
+                        <a href="cadastro_porte.php" class="btn btn-primary mb-2">Cadastrar Porte</a>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="d-flex flex-column">
-                    <a href="cadastro_deficiencia.php" class="btn btn-primary mb-2">Cadastrar Deficiência</a>
-                    <a href="cadastro_obito.php" class="btn btn-primary mb-2">Cadastrar Causa de Óbito</a>
-                    <a href="consulta_proprietarios.php" class="btn btn-secondary mb-2">Consultar Proprietários</a>
-                    <a href="consulta_animais.php" class="btn btn-secondary mb-2">Consultar Animais</a>
-                    <a href="consulta_raca.php" class="btn btn-secondary mb-2">Consultar Raças</a>
-                    <a href="consulta_deficiencia.php" class="btn btn-secondary mb-2">Consultar Deficiências</a>
+                    <?php if ($nivel_usuario == 1 || $nivel_usuario == 0): // Verifica se o usuário tem nível de acesso 1 ou 0 ?>
+                        <a href="consulta_proprietarios.php" class="btn btn-secondary mb-2">Consultar Proprietários</a>
+                        <a href="consulta_animais.php" class="btn btn-secondary mb-2">Consultar Animais</a>
+                        <a href="consulta_raca.php" class="btn btn-secondary mb-2">Consultar Raças</a>
+                        <a href="consulta_deficiencia.php" class="btn btn-secondary mb-2">Consultar Deficiências</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
