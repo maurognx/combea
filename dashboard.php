@@ -60,10 +60,28 @@ if ($hora_atual < 12) {
             </div>
         </div>
 
-        <div class="d-flex justify-content-between mt-4">
-            <a href="cadastro.php" class="btn btn-primary">Cadastrar Proprietário</a>
-            <a href="consulta_proprietarios.php" class="btn btn-secondary">Consultar Proprietários</a>
-            <a href="consulta_animais.php" class="btn btn-secondary">Consultar Animais</a>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="d-flex flex-column">
+                    <a href="cadastro_proprietario.php" class="btn btn-primary mb-2">Cadastrar Proprietário</a>
+                    <a href="cadastro_animal.php" class="btn btn-primary mb-2">Cadastrar Animal</a>
+                    <a href="cadastro_raca.php" class="btn btn-primary mb-2">Cadastrar Raça</a>
+                    <a href="cadastro_porte.php" class="btn btn-primary mb-2">Cadastrar Porte</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-column">
+                    <a href="cadastro_deficiencia.php" class="btn btn-primary mb-2">Cadastrar Deficiência</a>
+                    <a href="cadastro_obito.php" class="btn btn-primary mb-2">Cadastrar Causa de Óbito</a>
+                    <a href="consulta_proprietarios.php" class="btn btn-secondary mb-2">Consultar Proprietários</a>
+                    <a href="consulta_animais.php" class="btn btn-secondary mb-2">Consultar Animais</a>
+                    <a href="consulta_raca.php" class="btn btn-secondary mb-2">Consultar Raças</a>
+                    <a href="consulta_deficiencia.php" class="btn btn-secondary mb-2">Consultar Deficiências</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
             <a href="recuperar_senha.php" class="btn btn-secondary">Recuperar Senha</a>
             <a href="logout.php" class="btn btn-danger">Logout</a>
         </div>

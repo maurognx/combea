@@ -337,4 +337,16 @@ function listar_proprietarios() {
     $result = $conn->query($sql);
     return $result;
 }
+function listar_racas() {
+    $conn = db_connect();
+    $sql = "SELECT * FROM raca";
+    return $conn->query($sql);
+}
+
+function listar_deficiencias() {
+    $conn = db_connect();
+    $sql = "SELECT * FROM deficiencias";
+    return $conn->query($sql);
+}
+
 ?>
